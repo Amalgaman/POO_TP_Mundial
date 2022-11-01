@@ -38,6 +38,10 @@ public class Equipo {
 	public void setGrupo(int grupo) {
 		this.grupo = grupo;
 	}
+	@Override
+	public String toString() {
+		return "\n Equipo [id_equipo=" + id_equipo + ", nombre=" + nombre + ", goles=" + goles + ", grupo=" + grupo + "]";
+	}
 	
 	
 }
