@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.LinkedList;
+
 public class Partido {
 
 	private int id_partido;
@@ -7,16 +9,18 @@ public class Partido {
 	private int equipo2;
 	private int goles1;
 	private int goles2;
+	private String nombre;
 	private static int autoincrement=1;
 	
-	public Partido(int equipo1, int equipo2) {
+	public Partido(int equipo1, int equipo2,String nombre) {
 		super();
-		this.id_partido = this.autoincrement;
-		this.autoincrement++;
+		this.id_partido = Partido.autoincrement;
+		Partido.autoincrement++;
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;
 		this.goles1 = 0;
 		this.goles2 = 0;
+		this.nombre = nombre;
 	}
 
 	public int getId_partido() {
@@ -62,7 +66,25 @@ public class Partido {
 	@Override
 	public String toString() {
 		return "\n Partido [id_partido=" + id_partido + ", equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", goles1="
-				+ goles1 + ", goles2=" + goles2 + "]";
+				+ goles1 + ", goles2=" + goles2 + ", nombre=" + nombre + "]";
+	}
+	public LinkedList<Equipo> calcularResultado(LinkedList<Equipo> equipos){
+		
+		for(Equipo equipo : equipos) {
+			if(equipo.getId_equipo() == this.equipo1) {
+				equipo.setGoles(equipo.getGoles() + this.goles1);
+				if (this.goles1 > this.goles2) {
+					equipo.setPartidosGanados(equipo.getPartidosGanados()+1);
+				}
+			}else if(equipo.getId_equipo() == this.equipo2) {
+				equipo.setGoles(equipo.getGoles() + this.goles2);
+				if (this.goles1 < this.goles2) {
+					equipo.setPartidosGanados(equipo.getPartidosGanados()+1);
+				}
+			}
+		}
+			
+		return equipos;
 	}
 	
 	

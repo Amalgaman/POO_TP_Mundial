@@ -6,6 +6,7 @@ public class Equipo {
 	private String nombre;
 	private int goles;
 	private int grupo;
+	private int partidosGanados;
 	
 	public Equipo(int id_equipo, String nombre, int grupo) {
 		super();
@@ -13,6 +14,7 @@ public class Equipo {
 		this.nombre = nombre;
 		this.goles = 0;
 		this.grupo = grupo;
+		this.partidosGanados = 0;
 	}
 	public int getId_equipo() {
 		return id_equipo;
@@ -38,9 +40,16 @@ public class Equipo {
 	public void setGrupo(int grupo) {
 		this.grupo = grupo;
 	}
+	
+	public int getPartidosGanados() {
+		return partidosGanados;
+	}
+	public void setPartidosGanados(int partidosGanados) {
+		this.partidosGanados = partidosGanados;
+	}
 	@Override
 	public String toString() {
-		return "\n Equipo [id_equipo=" + id_equipo + ", nombre=" + nombre + ", goles=" + goles + ", grupo=" + grupo + "]";
+		return "\n Equipo [id_equipo=" + id_equipo + ", nombre=" + nombre + ", goles=" + goles + ", grupo=" + grupo + ", ganados="+partidosGanados+"]";
 	}
 	
 	

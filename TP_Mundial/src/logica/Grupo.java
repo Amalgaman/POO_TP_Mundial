@@ -6,8 +6,8 @@ public class Grupo {
 
 	private int id_grupo;
 	private String nombre;
-	private int puesto1;
-	private int puesto2;
+	private Equipo puesto1;
+	private Equipo puesto2;
 	private LinkedList<Equipo> equipos;
 	private LinkedList<Partido> partidos;
 	
@@ -15,8 +15,6 @@ public class Grupo {
 		super();
 		this.id_grupo = id_grupo;
 		this.nombre = nombre;
-		this.puesto1 = 0;
-		this.puesto2 = 0;
 		this.equipos = this.cargarEquipos();
 		this.partidos = this.cargarPartidos();
 	}
@@ -37,19 +35,19 @@ public class Grupo {
 		this.nombre = nombre;
 	}
 
-	public int getPuesto1() {
+	public Equipo getPuesto1() {
 		return puesto1;
 	}
 
-	public void setPuesto1(int puesto1) {
+	public void setPuesto1(Equipo puesto1) {
 		this.puesto1 = puesto1;
 	}
 
-	public int getPuesto2() {
+	public Equipo getPuesto2() {
 		return puesto2;
 	}
 
-	public void setPuesto2(int puesto2) {
+	public void setPuesto2(Equipo puesto2) {
 		this.puesto2 = puesto2;
 	}
 
@@ -93,10 +91,50 @@ public class Grupo {
 			equipos.add(new Equipo(6, "Iran", 2));
 			equipos.add(new Equipo(7, "USA", 2));
 			equipos.add(new Equipo(8, "Gales", 2));
-			break;	
-			
-		}
+			break;
 		
+		case 3:
+			equipos.add(new Equipo(9, "Argentina", 3));
+			equipos.add(new Equipo(10, "Arabia Saudita", 3));
+			equipos.add(new Equipo(11, "Mexico", 3));
+			equipos.add(new Equipo(12, "Polonia", 3));
+			break;
+		
+		case 4:
+			equipos.add(new Equipo(13, "Francia", 4));
+			equipos.add(new Equipo(14, "Australia", 4));
+			equipos.add(new Equipo(15, "Dinamarca", 4));
+			equipos.add(new Equipo(16, "Turquia", 4));
+			break;
+		
+		case 5:
+			equipos.add(new Equipo(17, "España", 5));
+			equipos.add(new Equipo(18, "Costa Rica", 5));
+			equipos.add(new Equipo(19, "Alemania", 5));
+			equipos.add(new Equipo(20, "Japon", 5));
+			break;
+		
+		case 6:
+			equipos.add(new Equipo(21, "Belgica", 6));
+			equipos.add(new Equipo(22, "Canada", 6));
+			equipos.add(new Equipo(23, "Marruecos", 6));
+			equipos.add(new Equipo(24, "Croasia", 6));
+			break;
+		
+		case 7:
+			equipos.add(new Equipo(25, "Brasil", 7));
+			equipos.add(new Equipo(26, "Serbia", 7));
+			equipos.add(new Equipo(27, "Suiza", 7));
+			equipos.add(new Equipo(28, "Camerun", 7));
+			break;
+		
+		case 8:
+			equipos.add(new Equipo(29, "Portugal", 8));
+			equipos.add(new Equipo(30, "Ghana", 8));
+			equipos.add(new Equipo(31, "Uruguay", 8));
+			equipos.add(new Equipo(32, "Corea del Sur", 8));
+			break;
+		}
 		
 		return equipos;
 	}
@@ -107,13 +145,59 @@ public class Grupo {
     	for (Equipo equipo1: this.equipos) {
 			for (Equipo equipo2: this.equipos) {
 				if(equipo1.getId_equipo() > equipo2.getId_equipo()) {
-					partidos.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo()));
+					partidos.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
 				}
 				
 			}
 		}
     	
     	return partidos;
+    }
+    public boolean calcularPuestos() {
+    	int aux=-1;
+    	
+    	for (Equipo equipo : this.equipos) {
+    	
+    		if(equipo.getPartidosGanados() > aux) {
+    			this.puesto1 = equipo;
+    			aux = this.puesto1.getPartidosGanados();
+    			
+    		}else if(equipo.getPartidosGanados() == aux) {
+    			
+    			if(equipo.getGoles() > this.puesto1.getGoles()) {
+    				this.puesto1 = equipo;
+    			
+    			}else if(equipo.getGoles() == this.puesto1.getGoles()) {
+    				if(Math.random()*2 == 0) {
+    					this.puesto1 = equipo;
+    				}
+    			}
+    		}
+    	}
+    	
+    	aux=-1;
+    	for (Equipo equipo : this.equipos) {
+        	
+    		if(equipo.getId_equipo()!=this.puesto1.getId_equipo()) {
+    		
+    			if(equipo.getPartidosGanados() > aux) {
+    			this.puesto2 = equipo;
+    			aux = this.puesto2.getPartidosGanados();
+    			
+    		}else if(equipo.getPartidosGanados() == aux) {
+    			
+    			if(equipo.getGoles() > this.puesto2.getGoles()) {
+    				this.puesto2 = equipo;
+    			
+    			}else if(equipo.getGoles() == this.puesto2.getGoles()) {
+    				if(Math.random()*2 == 0) {
+    					this.puesto2 = equipo;
+    				}
+    			}
+    		}
+    		}		
+    	}
+    	return true;
     }
 	
 }
