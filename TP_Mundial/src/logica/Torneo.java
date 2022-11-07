@@ -11,11 +11,14 @@ public class Torneo {
 	private LinkedList<Partido> finales;
 	private LinkedList<Equipo> equipos;
 	
-	public Torneo(int id_torneo, LinkedList<Equipo> equipos) {
+	public Torneo(int id_torneo) {
 		super();
 		this.id_torneo = id_torneo;
-		this.equipos = equipos;
-		this.octavos = this.cargarOctavos();
+		this.octavos = new LinkedList<Partido>();
+		this.cuartos = new LinkedList<Partido>();
+		this.semifinales = new LinkedList<Partido>();
+		this.finales = new LinkedList<Partido>();
+		this.equipos = new LinkedList<Equipo>();
 		
 	}
 
@@ -27,14 +30,6 @@ public class Torneo {
 		this.id_torneo = id_torneo;
 	}
 
-	public LinkedList<Partido> getPartidos() {
-		return octavos;
-	}
-
-	public void setPartidos(LinkedList<Partido> partidos) {
-		this.octavos = partidos;
-	}
-
 	public LinkedList<Equipo> getEquipos() {
 		return equipos;
 	}
@@ -42,24 +37,70 @@ public class Torneo {
 	public void setEquipos(LinkedList<Equipo> equipos) {
 		this.equipos = equipos;
 	}
+	
+	public LinkedList<Partido> getOctavos() {
+		return octavos;
+	}
+
+	public void setOctavos(LinkedList<Partido> octavos) {
+		this.octavos = octavos;
+	}
+
+	public LinkedList<Partido> getCuartos() {
+		return cuartos;
+	}
+
+	public void setCuartos(LinkedList<Partido> cuartos) {
+		this.cuartos = cuartos;
+	}
+
+	public LinkedList<Partido> getSemifinales() {
+		return semifinales;
+	}
+
+	public void setSemifinales(LinkedList<Partido> semifinales) {
+		this.semifinales = semifinales;
+	}
+
+	public LinkedList<Partido> getFinales() {
+		return finales;
+	}
+
+	public void setFinales(LinkedList<Partido> finales) {
+		this.finales = finales;
+	}
+
 	public boolean establecerEquipos(LinkedList<Grupo> grupos){
 		
 		int aux = 0;
 		
 		for(Grupo grupo : grupos) {
 			this.equipos.add(aux ,grupo.getPuesto1());
-			this.equipos.add(aux+8 ,grupo.getPuesto2());
+			this.equipos.add(grupo.getPuesto2());
 			aux++;
 		}
 		return true;
 	}
 	public boolean cargarOctavos(){
+		Equipo equipo1 = new Equipo(); 
+		Equipo equipo2 = new Equipo();
+		Equipo equipo3 = new Equipo(); 
+		Equipo equipo4 = new Equipo();
 		
-		for () {
+		for (int i=0 ; i < 7 ; i+=2) {
+			equipo1 = this.equipos.get(i);
+			equipo2 = this.equipos.get(i+9);
+			equipo3 = this.equipos.get(i+1);
+			equipo4 = this.equipos.get(i+8);
 			
+			this.octavos.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+			this.octavos.add(new Partido(equipo3.getId_equipo(), equipo4.getId_equipo(), equipo3.getNombre()+" contra "+equipo4.getNombre()));
 		}
 		
 		
+		return true;
+	}
+	public boolean cargarCuartos() {
 		return true;
 	}
 	

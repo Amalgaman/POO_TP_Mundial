@@ -10,13 +10,18 @@ public class Admin {
 			partido.setGoles1((int)(Math.random()*4));
 			partido.setGoles2((int)(Math.random()*4));
 			
-			partido.calcularResultado(grupo.getEquipos());
+			partido.calcularResultadoGrupo(grupo.getEquipos());
 		}
 		return true;
 	}
 	
 	public static boolean cargarResultados(Torneo torneo) {
-		
+		for (Partido partido : torneo.getOctavos()) {
+			partido.setGoles1((int)(Math.random()*4));
+			partido.setGoles2((int)(Math.random()*4));
+			
+			partido.calcularResultadoTorneo(torneo.getEquipos());
+		}
 		return true;
 	}
 }

@@ -16,6 +16,10 @@ public class Equipo {
 		this.grupo = grupo;
 		this.partidosGanados = 0;
 	}
+	//instanciar equipo vacio
+	public Equipo() {
+		
+	}
 	public int getId_equipo() {
 		return id_equipo;
 	}

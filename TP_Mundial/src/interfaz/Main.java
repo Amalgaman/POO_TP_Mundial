@@ -2,8 +2,7 @@ package interfaz;
 
 import java.util.LinkedList;
 
-import logica.Admin;
-import logica.Grupo;
+import logica.*;
 
 class Main {
 
@@ -19,16 +18,26 @@ class Main {
 		listaGrupos.add(new Grupo(7,"G"));
 		listaGrupos.add(new Grupo(8,"H"));
 		
-		for(Grupo grupo : listaGrupos) {
-			System.out.println(grupo);
-		}
 		
 		for(Grupo grupo : listaGrupos) {
 			Admin.cargarResultados(grupo);
 			grupo.calcularPuestos();
 			System.out.println(grupo);
 		}
+		for(Grupo grupo : listaGrupos) {
+			System.out.println(grupo.getNombre()+": "+grupo.getPuesto1().getNombre()+" - "+grupo.getPuesto2().getNombre());
+		}
+		
+		Torneo torneo = new Torneo(1);
 
+		torneo.establecerEquipos(listaGrupos);
+		for (Equipo equipo : torneo.getEquipos()) {
+			System.out.println(equipo.getNombre());
+		}
+		torneo.cargarOctavos();
+		for (Partido partido: torneo.getOctavos()) {
+			System.out.println(partido);
+		}
 	}
 
 }

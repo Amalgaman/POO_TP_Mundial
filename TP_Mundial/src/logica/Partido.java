@@ -93,6 +93,33 @@ public class Partido {
 			
 		return equipos;
 	}
+public Equipo calcularResultadoTorneo(LinkedList<Equipo> equipos){
+		
+		boolean equipo1=false,equipo2=false;
+		int i=0;
+		Equipo ganador = new Equipo();
+		
+		while(!equipo1 || !equipo2 || i < equipos.size()) {
+			if(equipos.get(i).getId_equipo() == this.equipo1) {
+				equipo1 = true;
+				equipos.get(i).setGoles(equipos.get(i).getGoles() + this.goles1);
+				if (this.goles1 > this.goles2) {
+					equipos.get(i).setPartidosGanados(equipos.get(i).getPartidosGanados()+1);
+					ganador = equipos.get(i);
+				}
+			}else if(equipos.get(i).getId_equipo() == this.equipo2) {
+				equipo2 = true;
+				equipos.get(i).setGoles(equipos.get(i).getGoles() + this.goles2);
+				if (this.goles1 < this.goles2) {
+					equipos.get(i).setPartidosGanados(equipos.get(i).getPartidosGanados()+1);
+					ganador = equipos.get(i);
+				}
+			}
+			i++;
+		}
+			
+		return ganador;
+	}
 	
 	
 }
