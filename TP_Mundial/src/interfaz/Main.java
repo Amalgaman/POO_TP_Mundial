@@ -24,6 +24,7 @@ class Main {
 			grupo.calcularPuestos();
 			System.out.println(grupo);
 		}
+		
 		for(Grupo grupo : listaGrupos) {
 			System.out.println(grupo.getNombre()+": "+grupo.getPuesto1().getNombre()+" - "+grupo.getPuesto2().getNombre());
 		}
@@ -35,9 +36,18 @@ class Main {
 			System.out.println(equipo.getNombre());
 		}
 		torneo.cargarOctavos();
+		System.out.println("Octavos de Final:");
 		for (Partido partido: torneo.getOctavos()) {
 			System.out.println(partido);
 		}
+		
+	
+			Admin.cargarResultados(torneo);
+			System.out.println("Cuartos de Final: ");
+			for (Partido partido: torneo.getCuartos()) {
+				System.out.println(partido);
+			}
+		
 	}
 
 }

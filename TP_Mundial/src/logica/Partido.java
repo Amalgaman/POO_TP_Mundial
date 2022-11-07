@@ -93,7 +93,8 @@ public class Partido {
 			
 		return equipos;
 	}
-public Equipo calcularResultadoTorneo(LinkedList<Equipo> equipos){
+	
+	public Equipo calcularResultadoTorneo(LinkedList<Equipo> equipos){
 		
 		boolean equipo1=false,equipo2=false;
 		int i=0;

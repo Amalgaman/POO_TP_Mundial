@@ -100,7 +100,17 @@ public class Torneo {
 		
 		return true;
 	}
-	public boolean cargarCuartos() {
+	public boolean cargarCuartos(LinkedList<Equipo> equipos) {
+		
+		Equipo equipo1 = new Equipo(); 
+		Equipo equipo2 = new Equipo();
+		
+		for(int i=0 ; i < 8 ; i+=2) {
+			equipo1 = equipos.get(i);
+			equipo2 = equipos.get(i+1);
+			
+			this.cuartos.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+		}
 		return true;
 	}
 	
