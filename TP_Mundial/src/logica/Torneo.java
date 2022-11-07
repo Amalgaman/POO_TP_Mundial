@@ -42,10 +42,25 @@ public class Torneo {
 	public void setEquipos(LinkedList<Equipo> equipos) {
 		this.equipos = equipos;
 	}
-	public LinkedList<Partido> cargarOctavos(){
-		LinkedList<Partido> partidos = new LinkedList<Partido>();
+	public boolean establecerEquipos(LinkedList<Grupo> grupos){
 		
-		return partidos;
+		int aux = 0;
+		
+		for(Grupo grupo : grupos) {
+			this.equipos.add(aux ,grupo.getPuesto1());
+			this.equipos.add(aux+8 ,grupo.getPuesto2());
+			aux++;
+		}
+		return true;
+	}
+	public boolean cargarOctavos(){
+		
+		for () {
+			
+		}
+		
+		
+		return true;
 	}
 	
 }

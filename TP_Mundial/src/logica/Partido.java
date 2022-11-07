@@ -68,20 +68,27 @@ public class Partido {
 		return "\n Partido [id_partido=" + id_partido + ", equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", goles1="
 				+ goles1 + ", goles2=" + goles2 + ", nombre=" + nombre + "]";
 	}
-	public LinkedList<Equipo> calcularResultado(LinkedList<Equipo> equipos){
+	
+	public LinkedList<Equipo> calcularResultadoGrupo(LinkedList<Equipo> equipos){
 		
-		for(Equipo equipo : equipos) {
-			if(equipo.getId_equipo() == this.equipo1) {
-				equipo.setGoles(equipo.getGoles() + this.goles1);
+		boolean equipo1=false,equipo2=false;
+		int i=0;
+		
+		while(!equipo1 || !equipo2 || i < equipos.size()) {
+			if(equipos.get(i).getId_equipo() == this.equipo1) {
+				equipo1 = true;
+				equipos.get(i).setGoles(equipos.get(i).getGoles() + this.goles1);
 				if (this.goles1 > this.goles2) {
-					equipo.setPartidosGanados(equipo.getPartidosGanados()+1);
+					equipos.get(i).setPartidosGanados(equipos.get(i).getPartidosGanados()+1);
 				}
-			}else if(equipo.getId_equipo() == this.equipo2) {
-				equipo.setGoles(equipo.getGoles() + this.goles2);
+			}else if(equipos.get(i).getId_equipo() == this.equipo2) {
+				equipo2 = true;
+				equipos.get(i).setGoles(equipos.get(i).getGoles() + this.goles2);
 				if (this.goles1 < this.goles2) {
-					equipo.setPartidosGanados(equipo.getPartidosGanados()+1);
+					equipos.get(i).setPartidosGanados(equipos.get(i).getPartidosGanados()+1);
 				}
 			}
+			i++;
 		}
 			
 		return equipos;

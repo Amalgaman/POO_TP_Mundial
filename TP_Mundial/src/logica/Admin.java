@@ -14,4 +14,9 @@ public class Admin {
 		}
 		return true;
 	}
+	
+	public static boolean cargarResultados(Torneo torneo) {
+		
+		return true;
+	}
 }
