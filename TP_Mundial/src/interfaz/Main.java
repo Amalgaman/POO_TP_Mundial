@@ -47,7 +47,16 @@ class Main {
 			for (Partido partido: torneo.getCuartos()) {
 				System.out.println(partido);
 			}
+			
+			System.out.println("Semifinales: ");
+			for (Partido partido: torneo.getSemifinales()) {
+				System.out.println(partido);
+			}
 		
+			System.out.println("Final: ");
+			for (Partido partido: torneo.getFinales()) {
+				System.out.println(partido);
+			}
 	}
 
 }

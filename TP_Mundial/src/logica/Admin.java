@@ -27,11 +27,34 @@ public class Admin {
 		}
 		
 		torneo.cargarCuartos(ganadores);
-		for (Equipo equipo : ganadores) {
-			ganadores.remove(ganadores.indexOf(equipo));
+		
+		for (int i=0 ; i < ganadores.size() ; i++) {
+			ganadores.remove(0);
 		}
 		
 		for (Partido partido : torneo.getCuartos()) {
+			partido.setGoles1((int)(Math.random()*4));
+			partido.setGoles2((int)(Math.random()*4));
+			
+			ganadores.add(partido.calcularResultadoTorneo(torneo.getEquipos()));
+		}
+		
+		torneo.cargarSemifinal(ganadores);
+		
+		for (int i=0 ; i < ganadores.size() ; i++) {
+			ganadores.remove(0);
+		}
+		
+		for (Partido partido : torneo.getSemifinales()) {
+			partido.setGoles1((int)(Math.random()*4));
+			partido.setGoles2((int)(Math.random()*4));
+			
+			ganadores.add(partido.calcularResultadoTorneo(torneo.getEquipos()));
+		}
+		
+		torneo.cargarFinal(ganadores);
+		
+		for (Partido partido : torneo.getFinales()) {
 			partido.setGoles1((int)(Math.random()*4));
 			partido.setGoles2((int)(Math.random()*4));
 			

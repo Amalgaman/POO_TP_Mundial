@@ -114,4 +114,31 @@ public class Torneo {
 		return true;
 	}
 	
+	public boolean cargarSemifinal(LinkedList<Equipo> equipos) {
+		
+		Equipo equipo1 = new Equipo(); 
+		Equipo equipo2 = new Equipo();
+		
+		for(int i=0 ; i < 4 ; i+=2) {
+			equipo1 = equipos.get(i);
+			equipo2 = equipos.get(i+1);
+			
+			this.semifinales.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+		}
+		return true;
+	}
+	
+	public boolean cargarFinal(LinkedList<Equipo> equipos) {
+		
+		Equipo equipo1 = equipos.get(0); 
+		Equipo equipo2 = equipos.get(1);
+		//Equipo equipo3 = equipos.get(2);
+		//Equipo equipo4 = equipos.get(3);
+		
+		this.finales.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+		//this.finales.add(new Partido(equipo3.getId_equipo(), equipo4.getId_equipo(), equipo3.getNombre()+" contra "+equipo4.getNombre()));
+		
+		return true;
+	}
+	
 }

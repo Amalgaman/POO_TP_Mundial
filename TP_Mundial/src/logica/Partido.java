@@ -74,7 +74,7 @@ public class Partido {
 		boolean equipo1=false,equipo2=false;
 		int i=0;
 		
-		while(!equipo1 || !equipo2 || i < equipos.size()) {
+		while(!equipo1 && !equipo2 || i > equipos.size()) {
 			if(equipos.get(i).getId_equipo() == this.equipo1) {
 				equipo1 = true;
 				equipos.get(i).setGoles(equipos.get(i).getGoles() + this.goles1);
@@ -96,30 +96,43 @@ public class Partido {
 	
 	public Equipo calcularResultadoTorneo(LinkedList<Equipo> equipos){
 		
-		boolean equipo1=false,equipo2=false;
+		boolean encontrado1=false,encontrado2=false;
+		Equipo equipo1 = new Equipo();
+		Equipo equipo2 = new Equipo();
 		int i=0;
 		Equipo ganador = new Equipo();
 		
-		while(!equipo1 || !equipo2 || i < equipos.size()) {
+		while(!encontrado1 || !encontrado2 && i < equipos.size()) {
+			
 			if(equipos.get(i).getId_equipo() == this.equipo1) {
-				equipo1 = true;
+				encontrado1 = true;
 				equipos.get(i).setGoles(equipos.get(i).getGoles() + this.goles1);
-				if (this.goles1 > this.goles2) {
-					equipos.get(i).setPartidosGanados(equipos.get(i).getPartidosGanados()+1);
-					ganador = equipos.get(i);
-				}
+				equipo1 = equipos.get(i);
+				
 			}else if(equipos.get(i).getId_equipo() == this.equipo2) {
-				equipo2 = true;
+				encontrado2 = true;
 				equipos.get(i).setGoles(equipos.get(i).getGoles() + this.goles2);
-				if (this.goles1 < this.goles2) {
-					equipos.get(i).setPartidosGanados(equipos.get(i).getPartidosGanados()+1);
-					ganador = equipos.get(i);
-				}
+				equipo2 = equipos.get(i);
 			}
+			
 			i++;
 		}
+		    if (this.goles1 > this.goles2) {
+				equipo1.setPartidosGanados(equipo1.getPartidosGanados()+1);
+				return equipo1;
+				
+			} else if (this.goles1 < this.goles2) {
+				
+				equipo2.setPartidosGanados(equipo2.getPartidosGanados()+1);
+				return equipo2;
+			}else {
+				if ((int)(Math.random()*1) == 0) {
+					return equipo1;
+				}else {
+					return equipo2;
+				}
+			}
 			
-		return ganador;
 	}
 	
 	
