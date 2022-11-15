@@ -65,8 +65,7 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return "\n Partido [id_partido=" + id_partido + ", equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", goles1="
-				+ goles1 + ", goles2=" + goles2 + ", nombre=" + nombre + "]";
+		return "\n"+nombre+" : "+goles1+" - "+goles2;
 	}
 	
 	public LinkedList<Equipo> calcularResultadoGrupo(LinkedList<Equipo> equipos){

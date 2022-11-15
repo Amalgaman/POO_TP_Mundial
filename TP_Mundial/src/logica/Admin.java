@@ -4,6 +4,51 @@ import java.util.LinkedList;
 
 public class Admin {
 
+	public static boolean completarResultados(LinkedList<Grupo> listaGrupos, Torneo torneo){
+		
+		//El Admin carga los resultados de los partidos de grupos
+				for(Grupo grupo : listaGrupos) {
+					Admin.cargarResultados(grupo);
+					grupo.calcularPuestos();
+					System.out.println(grupo);
+				}
+				
+				for(Grupo grupo : listaGrupos) {
+					System.out.println(grupo.getNombre()+": "+grupo.getPuesto1().getNombre()+" - "+grupo.getPuesto2().getNombre());
+				}
+				
+				//Se carga el Torneo (con los ganadores de los grupos)
+
+				torneo.establecerEquipos(listaGrupos);
+				for (Equipo equipo : torneo.getEquipos()) {
+					System.out.println(equipo.getNombre());
+				}
+				torneo.cargarOctavos();
+				System.out.println("Octavos de Final:");
+				for (Partido partido: torneo.getOctavos()) {
+					System.out.println(partido);
+				}
+				
+			
+				//El Admin carga los resultados del torneo 
+					Admin.cargarResultados(torneo);
+					System.out.println("Cuartos de Final: ");
+					for (Partido partido: torneo.getCuartos()) {
+						System.out.println(partido);
+					}
+					
+					System.out.println("Semifinales: ");
+					for (Partido partido: torneo.getSemifinales()) {
+						System.out.println(partido);
+					}
+				
+					System.out.println("Final: ");
+					for (Partido partido: torneo.getFinales()) {
+						System.out.println(partido);
+					}
+				
+		return true;			
+	}
 	public static boolean cargarResultados(Grupo grupo) {
 		
 		for (Partido partido : grupo.getPartidos()) {

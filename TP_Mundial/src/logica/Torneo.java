@@ -10,6 +10,7 @@ public class Torneo {
 	private LinkedList<Partido> semifinales;
 	private LinkedList<Partido> finales;
 	private LinkedList<Equipo> equipos;
+	private Equipo idGanador;
 	
 	public Torneo(int id_torneo) {
 		super();
