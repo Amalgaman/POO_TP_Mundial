@@ -1,5 +1,7 @@
 package interfaz;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import java.util.LinkedList;
 
 import javax.swing.*;
@@ -13,6 +15,9 @@ class Main {
 		boolean tCargado=false;
 		String []opciones1={"Jugar Mundial","Ver Resultados","Salir"};
 		int op1;
+		//metemos imagenes
+		Icon iconoPor = new ImageIcon(Main.class.getResource("../img/portada.jpg"));
+		Icon iconoSim = new ImageIcon(Main.class.getResource("../img/simulacion.png"));
 		
 		//instancio los grupos y el torneo
 		LinkedList<Grupo> listaGrupos = new LinkedList<Grupo>();
@@ -21,12 +26,13 @@ class Main {
 		
 		
 		do {
-			op1 = JOptionPane.showOptionDialog(null, "Bienvenido, selecciona una opcion", null, 0, 0, null, opciones1, opciones1);
+			op1 = JOptionPane.showOptionDialog(null, "Bienvenido, selecciona una opcion", null, 0, 0, iconoPor, opciones1, opciones1);
 			
 			switch(op1) {
 			case 0:
 				Admin.completarResultados(listaGrupos,torneo);
 				tCargado=true;
+				JOptionPane.showMessageDialog(null,"Simulacion de partidos completada!", "Simulando...", JOptionPane.PLAIN_MESSAGE, iconoSim);
 				break;
 			case 1:
 				if(tCargado) {
@@ -42,28 +48,9 @@ class Main {
 			}
 			
 		}while(op1<2);
-		
-		/*
-			
-			for (Libros libros : libreria) {
-				
-				aux2[libreria.indexOf(libros)]=libros.getNombre();
-			}
-				
-		
-		String opcion = (String) JOptionPane.showInputDialog(
-				null // para que se muestre centrado
-				,"Seleccione de Datos" // Mensaje de la ventana
-				,"Lista de Datos" // Titulo de la ventana
-				,JOptionPane.QUESTION_MESSAGE // Icono
-				,null //null para icono defecto de la ventana
-				,aux2 // el objeto
-				,aux2[0] // posicion del que va aparecer seleccionado
-				);
-		
-		JOptionPane.showMessageDialog(null, opcion);*/
 			
 	}
+	
 	public static boolean cargarGrupos(LinkedList<Grupo> listaGrupos) {
 		
 		listaGrupos.add(new Grupo(1,"A"));
@@ -84,6 +71,7 @@ class Main {
 		String []opcionesGrupo= new String[listaGrupos.size()];
 		String opGrupo,opEquipo;
 		String []opcionesEquipo= new String[32];
+		Icon iconoPor = new ImageIcon(Main.class.getResource("../img/copita.jpg"));
 		
 		//completo opcionesGrupo y opcionesEquipo
 		for (Grupo grupo : listaGrupos) {
@@ -98,7 +86,7 @@ class Main {
 		
 		
 		do {
-		op1 = JOptionPane.showOptionDialog(null, "¿Que resultados queres ver?", null, 0, 0, null, opciones1, opciones1);
+		op1 = JOptionPane.showOptionDialog(null, "Que resultados queres ver?", null, 0, 0, iconoPor, opciones1, opciones1);
 		
 		switch(op1) {
 		
@@ -116,7 +104,7 @@ class Main {
 			
 			for(Grupo grupo : listaGrupos) {
 				if(grupo.getNombre().equals(opGrupo)) {
-					JOptionPane.showMessageDialog(null, "GRUPO "+grupo.getNombre()+": 1°"+grupo.getPuesto1().getNombre()+" 2°"+grupo.getPuesto2().getNombre()+
+					JOptionPane.showMessageDialog(null, "GRUPO "+grupo.getNombre()+": 1ro "+grupo.getPuesto1().getNombre()+"- 2do "+grupo.getPuesto2().getNombre()+
 							                       "\n Partidos: "+
 				                                   grupo.getPartidos().get(0)+
 				                                   grupo.getPartidos().get(1)+
@@ -126,10 +114,13 @@ class Main {
 				                                   grupo.getPartidos().get(5));
 				}
 			}
-			}while (JOptionPane.showConfirmDialog(null, "¿Ver otro Grupo?") < 1);
+			}while (JOptionPane.showConfirmDialog(null, "Ver otro Grupo?") < 1);
 			
 			break;
 		case 1:
+			
+			JOptionPane.showMessageDialog(null, torneo);
+			
 			break;
 			
 		case 2:
@@ -142,6 +133,18 @@ class Main {
 					,opcionesEquipo // el objeto
 					,opcionesEquipo[0] // posicion del que va aparecer seleccionado
 					);
+			
+			for (Grupo grupo : listaGrupos) {
+				
+				opcionesGrupo[listaGrupos.indexOf(grupo)]=grupo.getNombre();
+				
+				for(Equipo equipo : grupo.getEquipos()) {
+					if (equipo.getNombre().equals(opEquipo)) {
+						JOptionPane.showMessageDialog(null, equipo);
+					}
+				}
+			}
+			
 			
 			break;
 			

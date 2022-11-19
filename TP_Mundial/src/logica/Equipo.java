@@ -53,7 +53,7 @@ public class Equipo {
 	}
 	@Override
 	public String toString() {
-		return "\n Equipo [id_equipo=" + id_equipo + ", nombre=" + nombre + ", goles=" + goles + ", grupo=" + grupo + ", ganados="+partidosGanados+"]";
+		return this.nombre+": Partidos ganados:"+this.partidosGanados+", Goles totales:"+this.goles;
 	}
 	
 	

@@ -141,5 +141,25 @@ public class Torneo {
 		
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		String octavos="Octavos: \n",cuartos="Cuartos: \n",semifinales="Semifinal: \n",finales="Final: \n";
+		
+		for (Partido partido : this.octavos) {
+		octavos = octavos+partido+"\n";	
+		}
+		for (Partido partido : this.cuartos) {
+			cuartos = cuartos+partido+"\n";	
+			}
+		for (Partido partido : this.semifinales) {
+			semifinales = semifinales+partido+"\n";	
+			}
+		for (Partido partido : this.finales) {
+			finales = finales+partido+"\n";	
+			}
+		
+		return octavos+cuartos+semifinales+finales;
+	}
 	
 }
