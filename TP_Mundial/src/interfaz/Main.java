@@ -1,6 +1,7 @@
 package interfaz;
 
 import javax.swing.Icon;
+
 import javax.swing.ImageIcon;
 import java.util.LinkedList;
 
