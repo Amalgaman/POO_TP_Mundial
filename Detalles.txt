@@ -1,0 +1,17 @@
+TYrabajo Final: Simulador del Mundial
+-Alumno:Sagnella Ignacio
+-Materia: Programacion Orientada a Objetos
+-Profesor: Gamaliel Quiroz
+
+Descripcion:
+El programa genera los resultaddos de los partidos de forma aleatoria. La funcionalidad que se agrego en el 
+final fue la de permitir al usuario adivinar cual sera el resultado de los partidos para ganar puntos, que 
+luego serviran para ganar premios. Despues de jugar, el usuario puede volver a ver los resultados del torneo 
+y sus premios:
+
+Funcionamiento:
+El "Admin" carga los resultados de los partidos antes de empesar a jugar y los muestra por consola. Luego el 
+programa le pregunta al usuario cual fue el resultado de cada partido y el Bookmaker comprueba si acerto o no 
+y acumula los puntos correspondientes. Cuando terminan todos los resultados, el Bookmaker entrega los premios 
+correspondientes. Despues se accede al menu de resultados donde el usuario puede revisar sus premios y 
+visualizar los resultados de los partidos.
