@@ -94,8 +94,8 @@ public class Torneo {
 			equipo3 = this.equipos.get(i+1);
 			equipo4 = this.equipos.get(i+8);
 			
-			this.octavos.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
-			this.octavos.add(new Partido(equipo3.getId_equipo(), equipo4.getId_equipo(), equipo3.getNombre()+" contra "+equipo4.getNombre()));
+			this.octavos.add(new Partido(equipo1.getNombre(), equipo2.getNombre(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+			this.octavos.add(new Partido(equipo3.getNombre(), equipo4.getNombre(), equipo3.getNombre()+" contra "+equipo4.getNombre()));
 		}
 		
 		
@@ -110,7 +110,7 @@ public class Torneo {
 			equipo1 = equipos.get(i);
 			equipo2 = equipos.get(i+1);
 			
-			this.cuartos.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+			this.cuartos.add(new Partido(equipo1.getNombre(), equipo2.getNombre(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
 		}
 		return true;
 	}
@@ -124,7 +124,7 @@ public class Torneo {
 			equipo1 = equipos.get(i);
 			equipo2 = equipos.get(i+1);
 			
-			this.semifinales.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+			this.semifinales.add(new Partido(equipo1.getNombre(), equipo2.getNombre(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
 		}
 		return true;
 	}
@@ -136,7 +136,7 @@ public class Torneo {
 		//Equipo equipo3 = equipos.get(2);
 		//Equipo equipo4 = equipos.get(3);
 		
-		this.finales.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+		this.finales.add(new Partido(equipo1.getNombre(), equipo2.getNombre(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
 		//this.finales.add(new Partido(equipo3.getId_equipo(), equipo4.getId_equipo(), equipo3.getNombre()+" contra "+equipo4.getNombre()));
 		
 		return true;

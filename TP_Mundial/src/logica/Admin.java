@@ -24,14 +24,16 @@ public class Admin {
 					System.out.println(equipo.getNombre());
 				}
 				torneo.cargarOctavos();
+				//El Admin carga los resultados del torneo 
+				
+				Admin.cargarResultados(torneo);
 				System.out.println("Octavos de Final:");
 				for (Partido partido: torneo.getOctavos()) {
 					System.out.println(partido);
 				}
 				
 			
-				//El Admin carga los resultados del torneo 
-					Admin.cargarResultados(torneo);
+				
 					System.out.println("Cuartos de Final: ");
 					for (Partido partido: torneo.getCuartos()) {
 						System.out.println(partido);
@@ -73,9 +75,7 @@ public class Admin {
 		
 		torneo.cargarCuartos(ganadores);
 		
-		for (int i=0 ; i < ganadores.size() ; i++) {
-			ganadores.remove(0);
-		}
+		ganadores = new LinkedList<Equipo>();
 		
 		for (Partido partido : torneo.getCuartos()) {
 			partido.setGoles1((int)(Math.random()*4));
@@ -86,9 +86,7 @@ public class Admin {
 		
 		torneo.cargarSemifinal(ganadores);
 		
-		for (int i=0 ; i < ganadores.size() ; i++) {
-			ganadores.remove(0);
-		}
+		ganadores = new LinkedList<Equipo>();
 		
 		for (Partido partido : torneo.getSemifinales()) {
 			partido.setGoles1((int)(Math.random()*4));
@@ -98,6 +96,8 @@ public class Admin {
 		}
 		
 		torneo.cargarFinal(ganadores);
+		
+		ganadores = new LinkedList<Equipo>();
 		
 		for (Partido partido : torneo.getFinales()) {
 			partido.setGoles1((int)(Math.random()*4));

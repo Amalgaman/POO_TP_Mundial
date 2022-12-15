@@ -145,7 +145,7 @@ public class Grupo {
     	for (Equipo equipo1: this.equipos) {
 			for (Equipo equipo2: this.equipos) {
 				if(equipo1.getId_equipo() > equipo2.getId_equipo()) {
-					partidos.add(new Partido(equipo1.getId_equipo(), equipo2.getId_equipo(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
+					partidos.add(new Partido(equipo1.getNombre(), equipo2.getNombre(), equipo1.getNombre()+" contra "+equipo2.getNombre()));
 				}
 				
 			}
