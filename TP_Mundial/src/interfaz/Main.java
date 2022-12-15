@@ -14,7 +14,7 @@ class Main {
 	public static void main(String[] args) {
 		
 		//opciones del menu
-		String []opciones1={"Jugar Mundial","Ver Resultados","Salir"};
+		String []opciones1={"Jugar Mundial","Ver Reglas","Salir"};
 		int op1;
 		//metemos imagenes
 		Icon iconoPor = new ImageIcon(Main.class.getResource("../img/portada.jpg"));
@@ -47,7 +47,8 @@ class Main {
                 JOptionPane.showMessageDialog(null, "Equipo Favorito: Primero, elegi tu equipo favorito. Cada\n"
                 									+ "vez que sale ganador de una instancia, ganas 3 puntos. \n \n"
                 									+ "Fase de Grupos: Elegi quienes seran el primer y segundo\n"
-            										+ "puesto de cada grupo, obtendras puntos de la siguiente manera:\n"
+            										+ "puesto de cada grupo, obtendras puntos de la siguiente \n"
+            										+ "manera:\n"
             										+ "-Si acertas el equipo y su posicion, ganas 2 puntos.\n"
             										+ "-Si acertas el equipo pero no su posicion, ganas 1 puntos.\n \n"
             										+ "Fase de Eliminatorias: Elegi el ganador de cada partido.\n"

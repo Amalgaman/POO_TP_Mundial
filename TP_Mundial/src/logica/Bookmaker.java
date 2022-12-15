@@ -43,11 +43,14 @@ public class Bookmaker {
 		boolean repetido=false;
 		
 		if(puntuacion == 108) {
-			premios.add(new Premio(1, "nombre", "descripcion", "imagen"));
+			premios.add(new Premio(0, "La Copa del Mundo", "El titulo definitivo del Futbol Mundial \n"
+									+ "Con tus dotes de adivino mereces una copia.", "premio-copa.jpg"));
 			puntuacion=puntuacion-3;
 		}
 			if(puntuacion == 0) {
-			premios.add(new Premio(1, "nombre", "descripcion", "imagen"));
+			premios.add(new Premio(-1, "La Copita del Mundo", "Otorgada solo a aquellos con una mala \n"
+									+ "suerte excepcional. Forjada con el plastico mas barato de peor \n"
+									+ "calidad, costo solo $300.", "premio-copita.jpg"));
 		} 
 			while(puntuacion>=3) {
 				
